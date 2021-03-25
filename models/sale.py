@@ -18,6 +18,14 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     @api.multi
+    def action_confirm(self):
+        super(SaleOrder, self).action_confirm()
+
+        for order in self:
+            for picking in order.picking_ids:
+                picking.note = order.note
+
+    @api.multi
     def action_invoice_create(self, grouped=False, final=False):
         """
         Create the invoice associated to the SO.

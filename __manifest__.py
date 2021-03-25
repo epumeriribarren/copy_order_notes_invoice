@@ -7,6 +7,7 @@
     'summary': 'Copia las notas del pedido en la factura',
     'depends': [
         'sale_management',
+        'sale_stock'
     ],
     'installable': True,
     'auto_install': False,
